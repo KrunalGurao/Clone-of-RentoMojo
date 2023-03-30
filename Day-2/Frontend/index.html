@@ -1,0 +1,1589 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="/Frontend/Images/Logo.jpg">
+    <title>MAIN PAGE</title>
+    <script src="https://kit.fontawesome.com/d7fb88724e.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+</head>
+<style>
+
+    
+    * {
+    margin: 0;
+    padding: 0;
+    font-family: 'montserrat', sans-serif;
+}
+
+#main_nav_cont {
+    height: 70px;
+    display: flex;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    background-color: white;
+}
+
+.navbar {
+    display: flex;
+    width: 90%;
+    margin: auto;
+    justify-content: space-between;
+}
+
+#logo-nam {
+    display: flex;
+    justify-content: space-around;
+    width: 15%;
+    color: rgb(109, 109, 109);
+    font-size: 16px;
+}
+
+#rm__logo {
+    width: 100%;
+}
+
+#rm__logo>img {
+    width: 100%;
+}
+
+#logo-nam>h2 {
+    margin-top: 7px;
+}
+
+#navbar__city__button {
+    display: flex;
+    width: 10%;
+    justify-content: space-around;
+    align-items: center;
+    font-size: 17px;
+}
+
+#searchbx {
+    border: 1px solid gray;
+    width: 40%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px 0;
+    border-radius: 10px;
+    background-color: rgb(232, 243, 243);
+}
+
+#search-bar__input-box {
+    height: 20px;
+    border: none;
+    border: 0px solid;
+    width: 100%;
+    background-color: rgb(232, 243, 243);
+}
+
+#search-bar__input-box {
+    outline: none;
+}
+
+#search-bar__input-box::placeholder {
+    font: 17px/3 sans-serif;
+}
+
+#nav_butt {
+    width: 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#login-signup__button {
+    width: 14%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    border: none;
+    background-color: #DC3226;
+    color: white;
+    font-size: 15px;
+    border: 1px solid #DC3226;
+}
+
+#login-signup__button:hover {
+    background-color: white;
+    color: #DC3226;
+    cursor: pointer;
+}
+
+
+/* ******************************************************************************************************* */
+
+
+.rm-city-select__background {
+
+    border: 2px solid gray;
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s, opacity 0.5s;
+    z-index: 10;
+
+
+}
+
+.model_active {
+    visibility: visible;
+    opacity: 1;
+}
+
+.city_sele {
+    position: relative;
+    width: 80%;
+    background-color: white;
+    padding: 50px;
+    border-radius: 10px;
+}
+
+#city__search-box {
+    width: 99.70%;
+    border: 1px solid gray;
+    margin-bottom: 20px;
+    border-radius: 10px;
+}
+
+#city__search-box>input {
+    width: 95%;
+    height: 50px;
+    border-radius: 10px;
+    margin: auto;
+    display: flex;
+    outline: none;
+    border: none;
+}
+
+#city__name__boxes {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    gap: 28px;
+    margin: auto;
+}
+
+#city__name__boxes>div {
+    height: 50px;
+    width: 110px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    border: 1px solid white;
+}
+
+#city__name__boxes>div:hover {
+    border: none;
+    border: 1px solid #DC3226;
+}
+
+#close-city-selector-model {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    cursor: pointer;
+    height: 20px;
+    width: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid gray;
+    border-radius: 50%;
+    color: gray;
+}
+
+#close-city-selector-model:hover {
+    border: 1px solid red;
+    border-radius: 50%;
+    color: #DC3226;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
+
+
+/* ********************************************************************************************************** */
+
+
+
+ .logInOut_container{
+    border: 2px solid gray;
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s, opacity 0.5s;
+    z-index: 100;
+   
+}
+.logInOut_model_active {
+    visibility: visible;
+    opacity: 1;
+}
+.workdv{
+    display: flex;
+    position: relative;
+    width: 60%;
+    height: 500px;
+    border-radius: 15px;
+    background-color: white;
+    overflow: hidden;
+
+}
+.imageDiv{
+    width:70%;
+   display: flex;
+   margin: auto;
+   justify-content: center;
+}
+
+.imageDiv img{
+    width: 80%;
+}
+
+.logInOutDesign {
+    width: 30%;
+    padding: 40px;
+    height:415px;
+    background-color: rgb(250,250,250);
+    position: relative;
+}
+.logInOutDesign > h2{
+    font-size: 19px;
+    color: rgb(49, 49, 49);
+}
+.logInOutDesign > input{
+   width: 100%;
+   height: 40px;
+   margin-top: 20px;
+   border: none;
+   outline: none;
+   border-radius: 2px;
+   border-bottom: 2px solid rgb(49, 49, 49);
+}
+.inputShow{
+    font-size: 12px;
+    display: flex;
+    justify-content: right;
+    margin-top: 5px;
+}
+.logInOutDesign > button{
+    position: absolute;
+    bottom: 40px;
+    left: 35px;
+    width: 75%;
+    height: 40px;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    background-color: gray;
+    color: white;  
+}
+.logInOutDesign > button:hover{
+    background-color: #DC3226;
+}
+.closeBTN{
+    position: absolute;
+    right: 20px;
+    z-index: 1;
+}
+
+
+
+/* ******************************************************************************************************** */
+
+
+
+.sil_cont {
+    position: relative;
+    width: 90%;
+    height: 510px;
+    margin: auto;
+    overflow: hidden;
+    border-radius: 40px 40px 40px 40px;
+    background-color: rgb(212, 224, 233);
+    margin-top: 10px;
+}
+
+.carousel-slider {
+    width: 100%;
+    display: flex;
+}
+
+.carousel-slider>img {
+    width: 100%;
+    border-radius: 0px 0px 40px 40px;
+}
+
+#prebtn {
+    position: absolute;
+    top: 35%;
+    z-index: 10;
+    left: 0;
+    font-size: 30px;
+    color: gray;
+    cursor: pointer;
+    background-color: white;
+    border: none;
+    height: 60px;
+    width: 30px;
+    border-radius: 0px 10px 10px 0px;
+}
+
+#nextbtn {
+    position: absolute;
+    top: 35%;
+    z-index: 10;
+    right: 0;
+    font-size: 30px;
+    color: gray;
+    cursor: pointer;
+    background-color: white;
+    border: none;
+    height: 60px;
+    width: 30px;
+    border-radius: 10px 0px 0px 10px;
+}
+
+
+
+/* ******************************************************************************************************* */
+
+
+
+
+#covid {
+    text-align: center;
+    margin-top: 16px;
+    color: black;
+    font-size: 14px;
+}
+
+a {
+    text-decoration: none;
+}
+
+
+/* *************************************************************************************************** */
+
+
+
+.categy {
+    width: 90%;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    margin: auto;
+    margin-top: 30px;
+    gap: 10px;
+    height: 150px;
+    align-items: center;
+
+}
+
+.categy>a>div {
+    height: 100px;
+    text-align: center;
+    border: 1px solid gray;
+    border-radius: 10px;
+}
+
+.categy>a>div:hover {
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+    height: 108px;
+    transition: all .2s ease-in-out;
+}
+
+.categy a>div>div {
+    font-size: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: rgb(49, 49, 49);
+    height: 70px;
+}
+
+.categy>a>div>h3 {
+    font-weight: 300;
+    font-size: 14px;
+    color: rgb(49, 49, 49);
+}
+
+
+
+/* ******************************************************************************************************** */
+
+
+
+
+.sil_div_2 {
+    width: 100%;
+    height: 650px;
+    border: 1px solid rgb(245, 247, 250);
+    margin-top: 30px;
+    background-color: rgb(245, 247, 250);
+    position: relative;
+
+}
+
+.child_div_1 {
+    width: 90%;
+    margin: auto;
+    margin: 100px auto 30px auto;
+}
+
+.child_div_1>span {
+    font-size: 30px;
+}
+
+.btnDesign {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: none;
+    border: 1px solid rgb(49, 49, 49);
+}
+
+.btnDesign:active {
+    width: 49px;
+    height: 49px;
+    cursor: pointer;
+    color: gray;
+}
+
+.aplha {
+    width: 20%;
+    margin: 0 30px;
+    overflow: hidden;
+    border-radius: 5px;
+}
+
+.aplha>div {
+
+    width: 250px;
+    padding: 20px 10px 20px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+    background-color: white;
+}
+
+.aplha div>img {
+    width: 100%;
+}
+
+.aplha div {
+    width: 250px;
+    padding: 20px 10px 20px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+    background-color: white;
+
+}
+
+.aplha div>div {
+    display: flex;
+    padding: 0;
+    box-shadow: none;
+}
+
+.aplha div>div>div:nth-child(1) {
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    font-size: 15px;
+}
+
+.aplha div>div>div:nth-child(1)>p {
+    color: gray;
+}
+
+.aplha div>div>div:nth-child(1)>p+p {
+    color: black;
+}
+
+.aplha div>div>div:nth-child(2) {
+    display: flex;
+    justify-content: right;
+
+}
+.aplha div>div>div:nth-child(2)>a>button {
+    width: 100px;
+    height: 35px;
+    color: #DC3226;
+    border-radius: 2px;
+    border: none;
+    border: 1px solid #DC3226;
+    background-color: white;
+}
+
+.aplha div>div>div:nth-child(2)>a>button:hover {
+    width: 100px;
+    height: 35px;
+    background-color: #DC3226;
+    color: white;
+    transition: 0.3s;
+    border-radius: 2px;
+
+}
+
+.aplha div>img+h3 {
+    font-size: 16px;
+    margin: 10px 0 10px 0;
+}
+
+
+
+/* ******************************************************************************************************* */
+
+
+
+
+.infopart {
+    width: 90%;
+    border: 1px solid white;
+    margin: auto;
+    margin-top: 40px;
+
+}
+
+.infopart>div {
+    margin: 50px 0 50px 0;
+}
+
+.infopart>div>span {
+    font-size: 25px;
+}
+
+.details {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+.details div>img {
+    width: 20%;
+}
+
+.details h3 {
+    font-weight: 300;
+    font-size: 19px;
+    margin: 10px 0 10px 0;
+}
+
+.details p {
+    font-weight: 300;
+    font-size: 14px;
+    margin: 10px 0 10px 0;
+    color: rgb(49, 49, 49);
+}
+
+#btn {
+    font-size: 17px;
+    background-color: white;
+    font-weight: 550;
+    color: rgb(93, 208, 210);
+}
+
+
+
+/* ******************************************************************************************************** */
+
+
+.people {
+    width: 90%;
+    height: 80px;
+    margin-top: 70px;
+    padding: 50px;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    margin: auto;
+}
+
+#ddone {
+    font-weight: 500;
+    font-size: 25px;
+    color: rgb(87, 87, 87);
+}
+
+#lightSpan {
+    color: rgb(77, 87, 87);
+    font-size: 25;
+}
+
+.people>p {
+    color: gray;
+    margin-top: 10px;
+}
+
+.cell {
+    width: 33%;
+    margin: 0 30px;
+    overflow: hidden;
+    border-radius: 5px;
+
+}
+
+.cell img {
+    width: 100%;
+    border-radius: 0 0 15px 15px;
+    object-fit: cover;
+}
+
+
+
+/* ***************************************************************************************************** */
+
+
+
+.footer_div {
+    width: 100%;
+    padding: 20px 0 20px;
+    margin-top: 60px;
+    background-color: rgb(245, 247, 250);
+}
+
+.instr {
+    width: 90%;
+    margin: auto;
+}
+
+.instr h1 {
+    font-size: 15px;
+    color: rgb(126, 126, 126);
+    margin-top: 20px;
+}
+
+.instr p {
+    font-size: 13px;
+    line-height: 16px;
+    margin-bottom: 10px;
+    color: rgb(189, 190, 192);
+}
+
+.instr span {
+    font-size: 13px;
+}
+
+.instr li {
+    font-size: 13px;
+    margin-bottom: 10px;
+    color: rgb(189, 190, 192);
+}
+
+#readmorebtn {
+    border: none;
+    background-color: rgb(245, 247, 250);
+    color: rgb(189, 190, 192);
+}
+
+#readmorebtn>i {
+    color: rgb(126, 126, 126);
+}
+
+
+
+/* ***************************************************************************************************** */
+
+
+
+
+.about_links {
+    width: 90%;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    margin: auto;
+}
+
+.about_links h2 {
+    font-size: 15px;
+    color: rgb(126, 126, 126);
+    margin-bottom: 20px;
+}
+
+.about_links li {
+    margin-bottom: 20px;
+    color: rgb(189, 190, 192);
+}
+
+.about_links>div {
+    padding: 30px;
+}
+
+#needhelp button {
+    height: 40px;
+    width: 70%;
+    margin-bottom: 20px;
+}
+
+#needhelp p {
+    margin-bottom: 20px;
+}
+
+.google-apple_img {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+}
+
+#google {
+    width: 100%;
+    height: 37px;
+
+}
+
+#apple {
+    width: 90%;
+    display: flex;
+
+}
+
+.about_links a {
+    color: rgb(189, 190, 192);
+    font-weight: 100;
+}
+
+.about_links ul {
+    list-style-type: none;
+}
+
+
+
+/* **************************************************************************************************** */
+
+
+
+.social_media {
+    display: flex;
+    justify-content: space-between;
+    width: 90%;
+    margin: auto;
+    position: relative;
+    margin-top: 20px;
+    height: 50px;
+    align-items: center;
+    color: gray;
+}
+
+#icons {
+    position: absolute;
+    width: 20%;
+    display: flex;
+    justify-content: space-around;
+    left: 38%;
+}
+
+#icons a {
+    height: 40px;
+    width: 40px;
+    border: 1px solid gray;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: gray;
+}
+</style>
+
+<!-- ***************************************************************************************************** -->
+
+
+<body>
+
+    <div id="main_nav_cont">
+        <div class="navbar">
+            <div id="logo-nam">
+                <div id="rm__logo">
+                    <img src="/Frontend/Images/Logo.jpg"
+                        alt="">
+                </div>
+                <h2>RENTAL MANIA</h2>
+            </div>
+
+            <div id="navbar__city__button">
+                <span id="print_city_name">Choose City</span>
+                <i class="fa-solid fa-angle-down"></i>
+            </div>
+            <div id="searchbx">
+                <input type="text" id="search-bar__input-box" placeholder="Search for products">
+                <i class="fa-solid fa-magnifying-glass"></i>
+            </div>
+            <div id="nav_butt">
+                <a href="/abc">
+                    <i style="color:gainsboro ;" class="fa-solid fa-cart-shopping"></i>
+                    <span style="color:black ;">Cart</span>
+                </a>
+            </div>
+            <div id="login-signup__button">
+                <span id="inner__login-signup__button"><a href=""></a>LOGIN / SIGNUP</a></span>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- ****************************************************************************************************** -->
+   
+
+
+    <div class="sil_cont">
+        <div class="carousel-slider">
+            <img src="https://s.rmjo.in/Fitness-Offer-HP-Web-%20(1).jpg" alt="" id="last-image_clone">
+
+            <img src="https://s.rmjo.in/Referral%20banner%20Web.jpg" alt="">
+
+            <img src="https://s.rmjo.in/Paytm-CB-Offer-web-%20(1).jpg" alt="">
+
+            <img src="https://s.rmjo.in/WP-Web.png" alt="">
+
+            <img src="https://s.rmjo.in/AC-banner-Web-.jpg" alt="">
+
+            <img src="https://s.rmjo.in/Fitness-offer-banner-for-Web--2.jpg" alt="">
+
+            <img src="https://s.rmjo.in/Paytm-Payments-Bank-web-.jpg" alt="">
+
+            <img src="https://s.rmjo.in/Fitness-Offer-HP-Web-%20(1).jpg" alt="" id="first-image_clone">
+        </div>
+        <button id="prebtn"><i class="fa-sharp fa-solid fa-chevron-left"></i></button>
+        <button id="nextbtn"><i class="fa-sharp fa-solid fa-chevron-right"></i></button>
+
+        <p id="covid">Safety precautions during COVID-19. We’re taking additional steps and precautionary
+            measures to protect our community from COVID-19.
+            <a href="/Frontend/index.html">know more <i
+                    class="fa-solid fa-circle-arrow-right"></i></a>
+        </p>
+    </div>
+
+  <!-- ********************************************************************************************************* -->
+
+
+    <div class="categy">
+        <a href="/abc">
+            <div>
+                <div>
+                    <i class="fa-sharp fa-solid fa-box-archive"></i>
+                </div>
+                <h3>Packeges</h3>
+            </div>
+        </a>
+
+        <a href="">
+            <div>
+                <div>
+                    <i class="fa-sharp fa-solid fa-couch"></i>
+                </div>
+                <h3>Farniture</h3>
+            </div>
+        </a>
+
+        <a href="">
+            <div>
+                <div>
+                    <i class="fa-sharp fa-solid fa-blender-phone"></i>
+                </div>
+                <h3>Appliances</h3>
+            </div>
+        </a>
+
+        <a href="">
+            <div>
+                <div>
+                    <i class="fa-sharp fa-solid fa-tv"></i>
+                </div>
+                <h3>Electronics</h3>
+            </div>
+        </a>
+
+        <a href="">
+            <div>
+                <div>
+                    <i class="fa-sharp fa-solid fa-person-biking"></i>
+                </div>
+                <h3>Fitness</h3>
+            </div>
+        </a>
+
+        <a href="">
+            <div>
+                <div>
+                    <i class="fa-sharp fa-solid fa-house-laptop"></i>
+
+                </div>
+                <h3>WFH Essentianl</h3>
+            </div>
+        </a>
+
+    </div>
+
+<!-- ********************************************************************************************************** -->
+
+
+
+    <div class="rm-city-select__background">
+        <div class="city_sele">
+            <span id="close-city-selector-model">X</span>
+            <div id="city__search-box">
+                <input type="text" id="inner__city__search-box" placeholder="Search city here">
+            </div>
+            <div id="city__name__boxes">
+                <div>Bangalore</div>
+                <div>Mumbai</div>
+                <div>Pune</div>
+                <div>Delhi</div>
+                <div>Noida</div>
+                <div>Gurgaon</div>
+                <div>Hyderabad</div>
+                <div>Chennai</div>
+                <div>Ahmedabad</div>
+                <div>Mysore</div>
+                <div>Jaipur</div>
+                <div>Faridabad</div>
+                <div>Ghaziabad</div>
+                <div>Gandhinagar</div>
+                <div>Chandigarh</div>
+                <div>Kolkata</div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- ************************************************************************************************* -->
+ 
+
+    <div class=" logInOut_container">
+        <div class="workdv">
+            <div class="imageDiv">
+                <img src="https://media.istockphoto.com/id/1035743670/vector/freelancer-site-in-a-chair-and-earn-money-home-office-workplace-hipster-bearded-freelancer.jpg?s=612x612&w=0&k=20&c=XLA5ZvnhaPWPIWeG9fAhJkP9pXp-twOC7oe3iC3ziMw=" alt="">
+                <span class="closeBTN"><i class="fa-solid fa-xmark"></i></span>
+            </div>
+        
+            <div id="logInOut_div" class="logInOutDesign">
+                <h2>Enter your number to
+                    Signup or Login</h2>
+                <input type="tel" name="MOB" id="monNumber" placeholder="Enter your phone number*" maxlength="10">
+                <span class="inputShow"><span id="updateNUM">0</span>/10</span>
+                <button class="continueBTN">
+                    Continue
+                </button>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- **************************************************************************************************** -->
+
+
+    <section class="sil_div_2">
+        <div class="child_div_1">
+            <span>You'll love to <br><u>take</u> these home</span>
+
+        </div>
+
+        <div class="main_sili">
+
+            <div class="aplha">
+                <div>
+                    <img src="https://p.rmjo.in/productSquare/g0m9rbge-500x500.jpg" alt="">
+                    <h3>Atticus Wooden Single Platform Bed (6x3)</h3>
+                    <div>
+                        <div>
+                            <p>Rent</p>
+                            <p><i class="fa-solid fa-indian-rupee-sign"></i> 339/mo</p>
+                        </div>
+                        <div>
+                            <a href=""><button>See more</button></a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+
+            <div class="aplha">
+                <div>
+                    <img src="https://p.rmjo.in/productSquare/ni20krjz-500x500.jpg" alt="">
+                    <h3>Hibe Wooden Queen Storage Bed (6x5)</h3>
+                    <div>
+                        <div>
+                            <p>Rent</p>
+                            <p><i class="fa-solid fa-indian-rupee-sign"></i> 929/mo</p>
+                        </div>
+                        <div>
+                            <a href=""><button>See more</button></a>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="aplha">
+                <div>
+                    <img src="https://p.rmjo.in/productSquare/16ctgjip-500x500.jpg" alt="">
+                    <h3>Kipper Wooden Queen Bed (6X5)</h3>
+                    <div>
+                        <div>
+                            <p>Rent</p>
+                            <p><i class="fa-solid fa-indian-rupee-sign"></i> 809/mo</p>
+                        </div>
+                        <div>
+                            <a href=""><button>See more</button></a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+
+            <div class="aplha">
+                <div>
+                    <img src="https://p.rmjo.in/productSquare/17kamdeu-500x500.jpg" alt="">
+                    <h3>Napste Metal Single Bed (6X3)</h3>
+                    <div>
+                        <div>
+                            <p>Rent</p>
+                            <p><i class="fa-solid fa-indian-rupee-sign"></i> 249/mo</p>
+                        </div>
+                        <div>
+                            <a href=""><button>See more</button></a>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="aplha">
+                <div>
+                    <img src="https://p.rmjo.in/productSquare/nu4fhe4j-500x500.jpg" alt="">
+                    <h3>Minion Bedside Table</h3>
+                    <div>
+                        <div>
+                            <p>Rent</p>
+                            <p><i class="fa-solid fa-indian-rupee-sign"></i> 79/mo</p>
+                        </div>
+                        <div>
+                            <a href=""><button>See more</button></a>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="aplha">
+                <div>
+                    <img src="https://p.rmjo.in/productSquare/g4ow6lcd-500x500.jpg" alt="">
+                    <h3>Morris office Chair</h3>
+                    <div>
+                        <div>
+                            <p>Rent</p>
+                            <p><i class="fa-solid fa-indian-rupee-sign"></i> 199/mo</p>
+                        </div>
+                        <div>
+                            <a href=""><button>See more</button></a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+
+            <div class="aplha">
+                <div>
+                    <img src="https://p.rmjo.in/productSquare/zufkl87m-500x500.jpg" alt="">
+                    <h3>Microwave Solo 20L</h3>
+                    <div>
+                        <div>
+                            <p>Rent</p>
+                            <p><i class="fa-solid fa-indian-rupee-sign"></i> 299/mo</p>
+                        </div>
+                        <div>
+                            <a href=""><button>See more</button></a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+
+            <div class="aplha">
+                <div>
+                    <img src="https://p.rmjo.in/productSquare/oly8kym0-500x500.jpg" alt="">
+                    <h3>Rex 3-Seater Leather Sofa (Black)</h3>
+                    <div>
+                        <div>
+                            <p>Rent</p>
+                            <p><i class="fa-solid fa-indian-rupee-sign"></i> 659/mo</p>
+                        </div>
+                        <div>
+                            <a href=""><button>See more</button></a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="aplha">
+                <div>
+                    <img src="https://p.rmjo.in/productSquare/m7bwzi92-500x500.jpg" alt="">
+                    <h3>Miller Office Chair</h3>
+                    <div>
+                        <div>
+                            <p>Rent</p>
+                            <p><i class="fa-solid fa-indian-rupee-sign"></i> 149/mo</p>
+                        </div>
+                        <div>
+                            <a href=""><button>See more</button></a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+
+            <div class="aplha">
+                <div>
+                    <img src="https://p.rmjo.in/productSquare/hdnqmf56-500x500.jpg" alt="">
+                    <h3>Stuart Study Table</h3>
+                    <div>
+                        <div>
+                            <p>Rent</p>
+                            <p><i class="fa-solid fa-indian-rupee-sign"></i> 149/mo</p>
+                        </div>
+                        <div>
+                            <a href=""><button>See more</button></a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+
+            <div class="aplha">
+                <div>
+                    <img src="https://p.rmjo.in/productSquare/0x59b8s1-500x500.jpg" alt="">
+                    <h3>Stowy 2-Door Wardrobe</h3>
+                    <div>
+                        <div>
+                            <p>Rent</p>
+                            <p><i class="fa-solid fa-indian-rupee-sign"></i> 389/mo</p>
+                        </div>
+                        <div>
+                            <a href=""><button>See more</button></a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+
+            <div class="aplha">
+                <div>
+                    <img src="https://p.rmjo.in/productSquare/t9uurxip-500x500.jpg" alt="">
+                    <h3>Pixar TV Unit</h3>
+                    <div>
+                        <div>
+                            <p>Rent</p>
+                            <p><i class="fa-solid fa-indian-rupee-sign"></i> 239/mo</p>
+                        </div>
+                        <div>
+                            <a href=""><button>See more</button></a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+
+            <div class="aplha">
+                <div>
+                    <img src="https://p.rmjo.in/productSquare/qcr7se17-500x500.jpg" alt="">
+                    <h3>Barney Leather Recliner (Brown)</h3>
+                    <div>
+                        <div>
+                            <p>Rent</p>
+                            <p><i class="fa-solid fa-indian-rupee-sign"></i> 799/mo</p>
+                        </div>
+                        <div>
+                            <a href=""><button>See more</button></a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+
+            <div class="aplha">
+                <div>
+                    <img src="https://p.rmjo.in/productSquare/bytomn61-500x500.jpg" alt="">
+                    <h3>Howard Study Table</h3>
+                    <div>
+                        <div>
+                            <p>Rent</p>
+                            <p><i class="fa-solid fa-indian-rupee-sign"></i> 99/mo</p>
+                        </div>
+                        <div>
+                            <a href=""><button>See more</button></a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="aplha">
+                <div>
+                    <img src="https://p.rmjo.in/productSquare/pagu0ofz-500x500.jpg" alt="">
+                    <h3>Magnum 1-Door Wardrobe</h3>
+                    <div>
+                        <div>
+                            <p>Rent</p>
+                            <p><i class="fa-solid fa-indian-rupee-sign"></i> 259/mo</p>
+                        </div>
+                        <div>
+                            <a href=""><button>See more</button></a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+
+            <div class="aplha">
+                <div>
+                    <img src="https://p.rmjo.in/productSquare/x0to9y4x-500x500.jpg" alt="">
+                    <h3>Mini Fridge</h3>
+                    <div>
+                        <div>
+                            <p>Rent</p>
+                            <p><i class="fa-solid fa-indian-rupee-sign"></i> 479/mo</p>
+                        </div>
+                        <div>
+                            <a href=""><button>See more</button></a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+
+        </div>
+    </section>
+
+    <!-- ******************************************************************************************************** -->
+
+
+    <div class="infopart">
+        <div>
+            <span>
+                There's more <br>
+                to renting
+            </span>
+        </div>
+        <div class="details">
+            <div>
+                <img src="/Frontend/Images/1.png" alt="">
+                <h3>Finest-quality products</h3>
+                <p>Quality matters to you, and us! That's why we do a strict quality-check for every product.</p>
+            </div>
+            <div>
+                <img src="/Frontend/Images/2.png" alt="">
+                <h3>Free relocation</h3>
+                <p>Changing your house or even your city? We'll relocate your rented products for free.</p>
+            </div>
+            <div>
+                <img src="/Frontend/Images/3.png" alt="">
+                <h3>Free maintenance</h3>
+                <p>Keeping your rented products in a spick and span condition is on us, so you can sit back and relax.
+                </p>
+            </div>
+            <div>
+                <img src="/Frontend/Images/4.png" alt="">
+                <h3>Cancel anytime</h3>
+                <p>Pay only for the time you use the product and close your subscription without any hassle.</p>
+            </div>
+            <div>
+                <img src="/Frontend/Images/5.png" alt="">
+                <h3>Easy return on delivery</h3>
+                <p>If you don't like the product on delivery, you can return it right away—no questions asked.</p>
+            </div>
+            <div>
+                <img src="/Frontend/Images/6.png" alt="">
+                <h3>Keep upgrading</h3>
+                <p>Bored of the same product? Upgrade to try another, newer design and enjoy the change!</p>
+            </div>
+        </div>
+        <a id="btn" href="/Frontend/index.html">KNOW MORE</a>
+    </div>
+
+
+ <!-- ******************************************************************************************************** -->
+
+
+
+    <div class="people">
+        <span id="ddone">Over 1.5 lac</span>
+        <br>
+        <span id="lightSpan">Happy Subscribers</span>
+        <p>Here's what they have to say about their Rental Mania experience.</p>
+    </div>
+
+
+    <div class="main_sili">
+        <div class="cell"><img src="/Frontend/Images/Kushal.png" alt=""></div>
+        <div class="cell"><img src="/Frontend/Images/Navin.png" alt=""></div>
+        <div class="cell"><img src="/Frontend/Images/Anjali.png" alt=""></div>
+        <div class="cell"><img src="/Frontend/Images/Shreyas.png" alt=""></div>
+        <div class="cell"><img src="/Frontend/Images/Nikita.PNG" alt=""></div>
+    </div>
+
+
+
+    <!-- **************************************************************************************************** -->
+
+    <div class="footer_div">
+        <div class="instr">
+            <h1><strong> Rental Mania: Upgrade To Your Dream Lifestyle At An Unbelievably Low Price!</strong></h1>
+            <p>Rental Mania is your ticket to a better lifestyle in India. We provide designer furniture, the newest
+                gadgets, and bestselling appliances on rent in major Indian cities. You can use the best products
+                available in the market at just a fraction of their retail value. You pay us a small monthly fee, which
+                becomes lesser the longer you rent from us.</p>
+            <p> Besides saving you money, we do our best to provide you with an exceptional, super-comfortable rental
+                experience. Our ordering process is straightforward and efficient. You can order from us in a matter of
+                minutes from your PC or smartphone. We offer speedy delivery in major Indian cities, namely Bangalore,
+                Mumbai, Delhi, Chennai, Pune, Hyderabad, Gurgaon, and Noida.</p>
+
+            <p>matter what product you rent from us, we will provide you with several complementary benefits with it.
+                The benefits range from a yearly product swap option to a periodic free maintenance service. These are
+                benefits no regular retailer offers. Start renting now!</p> <span id="less"></span>
+
+            
+            <button id="readmorebtn">Read More <i class="fa-sharp fa-solid fa-chevron-right"></i></button>
+
+            <span id="more">
+                <h1><strong>5 Reasons Why Renting Beats Buying</strong></h1>
+                <p>Is it smarter to buy instead of rent? Not when you’re renting from Rental Mania! We offer significant
+                    savings in addition to a multitude of extra benefits an ordinary store can’t offer.</p>
+                <ul type="square">
+                    <ul>
+                        <li><strong>Monthly savings:</strong> Rental Mania offers our products at a Rental Monthly
+                            Installment
+                            (RMI). This RMI is lower than the EMI you pay when you purchase the same product from a
+                            store.
+                        </li>
+                        <li><strong>Easy upgrades: </strong>At the end of the year, you can trade-in your rental product
+                            for
+                            a newer, different design! You won’t ever remain stuck with a product as long as you rent
+                            from
+                            us.</li>
+                        <li><strong>Free packing & moving:</strong>Not only do we deliver your product to you for free
+                            for
+                            the first time, but we’ll also pack and move it for you afterward if you move elsewhere.
+                            Rental Mania supports free relocation</li>
+                        <li><strong>Free maintenance: </strong>Any product is bound to wear down with time. But, that
+                            won’t
+                            happen if you rent from Rental Mania! We maintain your rental products for free periodically to
+                            keep them as good as new.
+                        </li>
+                        <li><strong>Love it or return it:</strong> If you purchase an item but find out you dislike it,
+                            you
+                            are stuck with it. You can’t give it back to the retailer. Rental Mania, however, allows you to
+                            return any item at the time of delivery. We won’t deduct your deposit.</li>
+                    </ul>
+                    <h1><strong>Top-Rated, Branded Products–For Home, Office, And Personal Use</strong></h1>
+                    <p>At Rental Mania, we put quality first. That’s why we source our products only from the most
+                        reputable,
+                        trusted manufacturers. You get to rent the most popular, best-selling products in the market.
+                    </p>
+
+                    <ul>
+                        <li><strong>Furniture on rent:</strong> Rental Mania offers furniture from premium, reputed brands.
+                            We
+                            have furniture for homes and offices. Alternatively, you can rent furniture for any room in
+                            your
+                            home, including your living room, dining room, study, kitchen, outdoor space, and nursery.
+                        </li>
+                        <li><strong>Appliances on rent:</strong> Appliances like smart TVs, inverter air conditioners,
+                            and
+                            front-loading washing machines make life easier. Rental Mania offers an all-inclusive selection
+                            of
+                            appliances from top brands like Samsung, Haier, and Voltas.</li>
+                        <li><strong>Electronics on rent: </strong> Is staying connected and living a smarter lifestyle
+                            in
+                            today’s digital era a priority for you? Rental Mania provides a wide selection of the latest,
+                            high-demand gadgets and home electronics, including smartphones, tablets, laptops, and smart
+                            home devices.</li>
+                        <li><strong>Fitness gear on rent: </strong> Don’t have time to hit the gym? Just rent fitness
+                            equipment for your home and exercise in your free time. We rent out treadmills, exercise
+                            bikes,
+                            cross trainers, and other fitness gear for strength and cardio training. Our gear comes with
+                            the
+                            very latest in fitness features.</li>
+                        <li><strong>Furniture & appliance packages on rent:</strong>It can be expensive to furnish an
+                            entire
+                            house or office. Our furniture and appliance packages contain a pre-selected grouping of
+                            items
+                            available at a higher than usual discount.</li>
+
+                    </ul>
+                    <h1><strong>We Take Care Of You</strong></h1>
+                    <p>At Rental Mania, we are committed to providing you not just the best products but also excellent
+                        service. Our selection is geared towards a variety of budgets and needs. We offer something for
+                        everyone.</p>
+                    <ul>
+                        <li><strong>Flexible plans: </strong>We offer plans with flexible rental terms. You can rent any
+                            item from us for a few months or a few years. The choice is yours.</li>
+                        <li><strong>Damage waiver: </strong>If you accidentally damage your item, our damage waiver
+                            policy
+                            covers the cost of minor repairs.</li>
+                        <li><strong>Opt-out early: </strong>You’re not tied to your rental term. If you change your mind
+                            about renting from us, you can opt-out of your contract early. You only have to pay until
+                            the
+                            current usage period.</li>
+                    </ul>
+                    <h1>Lightning-Quick Delivery</h1>
+                    <p>We know you don’t like to wait. Your time is important to us too, which is why we provide you
+                        with
+                        prompt, zero-delay service.</p>
+                    <ul>
+                        <li><strong>Order online:</strong>You can order from us online. You don’t need to call us or
+                            visit.
+                            Ordering takes only 5 minutes from your smartphone or laptop. Simply add your item to the
+                            shopping cart and check out!</li>
+                        <li><strong>Super-fast delivery: </strong>As soon as we process your order and verify your
+                            profile,
+                            we initiate the delivery process. We deliver for free to your home or office. It takes us 4
+                            business days or less to deliver in supported pin codes.</li>
+                        <li><strong>Free installation: </strong> Our team will also install the rented items for you
+                            when we
+                            deliver them. You don’t need to do anything. Just sit back, relax, and let our team take
+                            care of
+                            it for you.</li>
+                    </ul>
+
+            </span>
+
+        </div>
+
+
+<!-- ********************************************************************************************************** -->
+
+
+
+
+        <div class="about_links">
+            <div id="rentalm">
+                <ul style>
+                    <h2>RENTAL MANIA</h2>
+                    <li><a href="/Frontend/index.html">About Us</a></li>
+                    <li><a href="/Frontend/index.html">Culture</a></li>
+                    <li><a href="/Frontend/index.html">Investor</a></li>
+                    <li><a href="/Frontend/index.html">Careers</a></li>
+                    <li><a href="/Frontend/index.html">Contacts</a></li>
+                    <li><a href="/Frontend/index.html">Our Branch</a></li>
+                    <li><a href="/Frontend/index.html">Sitemap</a></li>
+                </ul>
+            </div>
+            <div id="information">
+                <ul>
+                    <h2>INFORMATION</h2>
+                    <li><a href="/Frontend/index.html">Blog</a></li>
+                    <li><a href="/Frontend/index.html">FAQs</a></li>
+                    <li><a href="/Frontend/index.html">Document Required</a></li>
+                </ul>
+            </div>
+            <div id="policies">
+                <h2>POLICIES</h2>
+                <ul style>
+                    <li><a href="/Frontend/index.html">Shipping Policies</a></li>
+                    <li><a href="/Frontend/index.html">Cancellation & Return</a></li>
+                    <li><a href="/Frontend/index.html">Privacy Policy</a></li>
+                    <li><a href="/Frontend/index.html">Rental Terms & Condition</a></li>
+                    <li><a href="/Frontend/index.html">Referral Tearms & Condtion</a></li>
+                </ul>
+            </div>
+            <div id="needhelp">
+                <h2>NEED HELP ?</h2>
+                <button>Chat with us (9AM - 6PM)</button>
+                <p><i class="fa-solid fa-paper-plane"></i> <a
+                        href="/Frontend/index.html">jo@rental_mania.com</a></p>
+                <h2>DOWNLOAD APP</h2>
+
+                <div class="google-apple_img">
+
+                    <div><a
+                            href="/Frontend/index.html"><img
+                                src="/Frontend/Images/play store.PNG" alt="" id="google"></a>
+                    </div>
+
+
+                    <div><a
+                            href="/Frontend/index.html"><img
+                                src="/Frontend/Images/app store.PNG" alt="" id="apple"></a></div>
+
+                </div>
+            </div>
+        </div>
+
+        <hr style="width:90%; margin: auto;">
+
+        <div class="social_media">
+            <div>
+                <span><i class="fa-solid fa-copyright"></i> 2023. Edunetwork Pvt. Ltd.</span>
+            </div>
+            <div id="icons">
+                <a href="/Frontend/index.html"><i class="fa-brands fa-facebook-f"></i></a>
+                <a href="/Frontend/index.html"><i class="fa-brands fa-twitter"></i></a>
+                <a href="/Frontend/index.html"><i class="fa-brands fa-linkedin-in"></i></a>
+                <a href="/Frontend/index.html"><i class="fa-brands fa-youtube"></i></a>
+            </div>
+            <div>
+                <span style="cursor:pointer ;">Go Up <i class="fa-solid fa-angle-up"></i></span>
+            </div>
+        </div>
+    </div>
+
+
+
+<!-- ****************************************************************************************************** -->
+
+
+
+    <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
+    <script type="text/javascript">
+        $('.main_sili').flickity({
+            cellAlign: 'left',
+            wrapAround: true,
+            freeScroll: true
+        });
+    </script>
+
+
+</body>
+</html>
+<script src="/Backend/index.js"></script>
