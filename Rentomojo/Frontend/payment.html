@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="/Frontend/Images/Logo.jpg">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <title>PAYMENT</title>
+    <style>
+
+
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: 'montserrat', sans-serif;
+        }
+
+        h1 {
+            text-align: center;
+            margin: 30px 0 30px 0;
+        }
+
+        #container {
+            width: 95%;
+            margin: auto;
+            padding: 10px 10px 30px;
+            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+            border-radius: 15px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+        }
+
+        form>input {
+            margin: 10px 0 10px 0;
+            height: 40px;
+            border-radius: 10px;
+            border: none;
+            box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+
+        }
+        
+        #submitButton:hover {
+            background-color: rgb(220, 50, 38);
+            color: white;
+            transition: all 0.3s ease-in-out;
+        }
+
+
+        .otp {
+            display: flex;
+            margin: auto;
+            height: 40px;
+            width: 100px;
+            align-items: center;
+            justify-content: center;
+            margin-top: 10px;
+            border-radius: 10px;
+            border: none;
+            
+        }
+        .otp:hover{
+            background-color: rgb(220, 50, 38);
+            color: white;
+            transition: all 0.3s ease-in-out;
+        }
+        .otp >a:hover{
+            background-color: rgb(220, 50, 38);
+            color: white;
+            transition: all 0.3s ease-in-out;
+        }
+
+        a {
+            text-decoration: none;
+            color: black;
+        }
+
+
+        .maincont {
+            width: 100%;
+            height: 100vh;
+        }
+
+        .edit {
+            width: 100%;
+        }
+
+        .subcont {
+            position: fixed;
+            width: 100%;
+            height: 100vh;
+            top: 0;
+            left: 0;
+            background-color: rgba(0, 0, 0, 0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: visibility 0s, opacity 0.5s;
+            z-index: 100;
+        }
+
+        .working_div {
+            display: flex;
+            position: relative;
+            width: 35%;
+            height: 600px;
+            border-radius: 15px;
+            background-color: white;
+            overflow: hidden;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="maincont">
+        <img src="https://scontent.fnag11-1.fna.fbcdn.net/v/t1.6435-9/83069250_2582605425331408_5879883972812472320_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=e3f864&_nc_ohc=wPvXKC26lNgAX9GbQO0&_nc_ht=scontent.fnag11-1.fna&oh=00_AfAZLRP7TWlnBDVvbr2GcoKPAPstjKA_Wt5czaiNw1m7Kw&oe=644B5228" alt="ERROR" class="edit">
+    </div>
+    
+    <div class=" subcont">
+        <div class="working_div">
+           
+            <div id="container">
+                <form>
+                    <h1>Payment Channel</h1>
+                    <label for="CardNumber">Enter your Card Number</label>
+                    <input type="tel" name="" id="cardNumber" placeholder="&nbsp; &nbsp; 0000 0000 0000 0000*" maxlength="19">
+                    <label for="CVV">CVV</label>
+                    <input type="password" id="cvvNum" placeholder="&nbsp; &nbsp;Enter your CVV number*" maxlength="3">
+                    <label for="ExpiryDate">Card expiry Date</label>
+                    <input type="date" id="expiryDate">
+                    <label for="name">Card holder name</label>
+                    <input type="text" id="name" placeholder="&nbsp; &nbsp;Card holder name*">
+        
+                    <input type="submit" id="submitButton">
+                </form>
+        
+                <button class="otp"><a href="/Frontend/confirm.html">Get OTP</a></button>
+        </div>
+    </div>
+</body>
+</html>
+<script src="/Backend/payment.js"></script>
